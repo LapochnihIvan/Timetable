@@ -15,10 +15,8 @@ public:
 	void disable();
 protected:
 	sf::RectangleShape rect;
-	sf::Text* text;
-	sf::RenderWindow* window;
+	sf::Text text;
+	sf::RenderWindow* w;
 	bool run;
-private:
-	sf::Font font;
 };
 #endif

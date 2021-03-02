@@ -50,5 +50,8 @@
     <ClInclude Include="RectWithText.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

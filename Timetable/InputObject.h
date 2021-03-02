@@ -15,7 +15,7 @@ public:
 		const sf::Vector2f& size,
 		const sf::String& string,
 		sf::RenderWindow& window);
-	virtual void actionListener(sf::Event& event) final;
+	virtual void actionListener(sf::Event& event);
 protected:
 	virtual bool check() = 0;
 	virtual void foo() = 0;

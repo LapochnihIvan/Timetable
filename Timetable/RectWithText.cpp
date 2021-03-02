@@ -7,14 +7,15 @@ RectWithText::RectWithText(const sf::Vector2f& position,
 	sf::RenderWindow& window):
 	rect(size)
 {
+	static sf::Font font;
 	if (font.getInfo().family == "")
 		font.loadFromFile("arial.ttf");
-	text = new sf::Text(string, font, 22);
+	text = sf::Text(string, font, 22);
 	rect.setPosition(position);
 	rect.setFillColor(sf::Color(169, 169, 169));
-	text->setPosition(position.x + window.getSize().x / 8.f - text->getGlobalBounds().width / 2.f, position.y);
-	text->setFillColor(sf::Color(99, 99, 99));
-	this->window = &window;
+	text.setPosition(position.x + window.getSize().x / 8.f - text.getGlobalBounds().width / 2.f, position.y);
+	text.setFillColor(sf::Color(99, 99, 99));
+	w = &window;
 	run = false;
 }
 
@@ -29,12 +30,8 @@ RectWithText::draw()
 {
 	if (run)
 	{
-		window->draw(rect);
-		//sf::Text text(L"Саня", font, 22);
-		//text.setPosition(300, 300);
-		//text.setFillColor(sf::Color(99, 99, 99));
-		//window->draw(text);
-		window->draw(*text);
+		w->draw(rect);
+		w->draw(text);
 	}
 }
 

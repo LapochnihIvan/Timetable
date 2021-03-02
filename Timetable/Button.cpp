@@ -9,14 +9,13 @@ Button::Button(const sf::Vector2f& position,
 	action(action)
 {
 	evType = sf::Event::MouseButtonPressed;
-	//actionListener();
 }
 
 bool
 Button::check()
 {
 	sf::Vector2i mCoords = sf::Mouse::getPosition();
-	sf::Vector2i wCoords = window->getPosition();
+	sf::Vector2i wCoords = w->getPosition();
 	sf::Vector2f bCoords = rect.getPosition();
 	sf::Vector2f bSize = rect.getSize();
 	return mCoords.x > bCoords.x + 8 + wCoords.x
