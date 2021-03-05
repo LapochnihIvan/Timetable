@@ -6,10 +6,16 @@
 class RectWithText
 {
 public:
-	RectWithText(const sf::Vector2f& position,
-		const sf::Vector2f& size,
-		const sf::String& string,
-		sf::RenderWindow& window);
+	RectWithText(const sf::String &string,
+		const sf::Vector2f &size,
+		sf::RenderWindow &window,
+		unsigned short characterSize = 22U);
+	RectWithText(const sf::String &string,
+		const sf::Vector2f &position,
+		const sf::Vector2f &size,
+		const sf::Color &bgColor,
+		sf::RenderWindow &window,
+		unsigned short characterSize);
 	void enable();
 	void draw();
 	void disable();

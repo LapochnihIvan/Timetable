@@ -1,16 +1,15 @@
 #include "InputObject.h"
 
-InputObject::InputObject(const sf::Vector2f& position,
-                         const sf::Vector2f& size,
-                         const sf::String& string,
-                         sf::RenderWindow& window) :
-    RectWithText(position, size, string, window)
+InputObject::InputObject(const sf::String &string,
+    const sf::Vector2f &size,
+    sf::RenderWindow &window) :
+    RectWithText(string, size, window)
 {
 
 }
 
 void
-InputObject::actionListener(sf::Event& event)
+InputObject::actionListener(sf::Event &event)
 {
     //sf::Event event;
     //run = true;
@@ -21,7 +20,7 @@ InputObject::actionListener(sf::Event& event)
     //{
     if (event.type == evType)
         if (check())
-            foo();
+            action();
     //}
 //}
 }

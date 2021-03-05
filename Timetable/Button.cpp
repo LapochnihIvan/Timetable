@@ -1,13 +1,18 @@
 #include "Button.h"
 
-Button::Button(const sf::Vector2f& position,
-	const sf::Vector2f& size,
-	const sf::String& string,
-	const std::function<void()>& action,
-	sf::RenderWindow& window) :
-	InputObject(position, size, string, window),
-	action(action)
+Button::Button(const sf::String &string, 
+	const sf::Vector2f &position,
+	const sf::Vector2f &size,
+	const std::function<void()> &action,
+	sf::RenderWindow &window) :
+	InputObject(string,
+		size,
+		window),
+	act(action)
 {
+	rect.setPosition(position);
+	rect.setFillColor(sf::Color(169, 169, 169));
+	text.setPosition(position.x + window.getSize().x / 8.f - text.getGlobalBounds().width / 2.f, position.y + 5);
 	evType = sf::Event::MouseButtonPressed;
 }
 
@@ -25,7 +30,7 @@ Button::check()
 }
 
 void
-Button::foo()
+Button::action()
 {
-	action();
+	act();
 }

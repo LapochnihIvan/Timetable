@@ -2,6 +2,7 @@
 #define TEXT_BOX_H
 
 #include <xstring>
+#include <map>
 
 #include "InputObject.h"
 
@@ -12,15 +13,15 @@ public:
 		Numeric,
 		Text
 	};
-	TextBox(const sf::Vector2f& position,
-		const sf::Vector2f& size,
-		const Type type,
-		sf::RenderWindow& window);
+	TextBox(float y,
+		const Type &type,
+		sf::RenderWindow &window);
 	bool check() final;
-	void foo() final;
-	void actionListener(sf::Event& event) final;
+	void action() final;
+	void actionListener(sf::Event &event) final;
 private:
 	Type type;
 	sf::Keyboard::Key pressKey;
+	std::map<sf::Keyboard::Key, wchar_t> russianChars;
 };
 #endif

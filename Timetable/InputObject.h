@@ -11,14 +11,13 @@
 class InputObject : public RectWithText
 {
 public:
-	InputObject(const sf::Vector2f& position,
-		const sf::Vector2f& size,
-		const sf::String& string,
-		sf::RenderWindow& window);
-	virtual void actionListener(sf::Event& event);
+	InputObject(const sf::String &string,
+		const sf::Vector2f &size,
+		sf::RenderWindow &window);
+	virtual void actionListener(sf::Event &event);
 protected:
 	virtual bool check() = 0;
-	virtual void foo() = 0;
+	virtual void action() = 0;
 	sf::Event::EventType evType;
 };
 #endif

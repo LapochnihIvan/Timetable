@@ -2,6 +2,9 @@
 #define GUI_H
 
 #include <vector>
+#include <iomanip>
+#include <functional>
+#include <xstring>
 
 #include <SFML/Graphics.hpp>
 
@@ -12,20 +15,21 @@ class GUI
 public:
 	GUI();
 	void startMainMenu();
-	void generateTable();
-	void run();
-	void inputLesson();
 
 private:
 	sf::RenderWindow window;
 	sf::Vector2u screanSize;
 	sf::Font font;
 	std::vector<sf::RectangleShape> rects;
-	std::vector<sf::Text> texts;
+	sf::Text text;
+	std::vector<RectWithText> rectsWithTexts;
 	std::vector<Button> buttons;
 	sf::Color grey;
 	sf::Color darkGrey;
-	TextBox t;
-	TextBox tt;
+	std::vector<TextBox> textBoxes;
+	void generateTable();
+	void run();
+	void inputLesson();
+	void swapTextBox();
 };
 #endif

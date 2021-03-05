@@ -9,14 +9,14 @@
 class Button : public InputObject
 {
 public:
-	Button(const sf::Vector2f& position,
-		const sf::Vector2f& size,
-		const sf::String& string,
-		const std::function<void()>& action,
-		sf::RenderWindow& window);
+	Button(const sf::String &string, 
+		const sf::Vector2f &position,
+		const sf::Vector2f &size,
+		const std::function<void()> &action,
+		sf::RenderWindow &window);
 	bool check() final;
-	void foo() final;
+	void action() final;
 private:
-	const std::function<void()> action;
+	const std::function<void()> act;
 };
 #endif
