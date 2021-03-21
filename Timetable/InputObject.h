@@ -16,8 +16,8 @@ public:
 		sf::RenderWindow &window);
 	virtual void actionListener(sf::Event &event);
 protected:
+	sf::Event::EventType evType;
 	virtual bool check() = 0;
 	virtual void action() = 0;
-	sf::Event::EventType evType;
 };
 #endif

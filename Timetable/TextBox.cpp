@@ -1,5 +1,7 @@
 #include "TextBox.h"
 
+#include "Writer.h"
+
 TextBox::TextBox(float y,
 	const Type &type,
 	sf::RenderWindow &window) :
@@ -11,41 +13,6 @@ TextBox::TextBox(float y,
 	text.setPosition(0, y + 3.f);
 	evType = sf::Event::KeyPressed;
 	this->type = type;
-	russianChars = { 
-		{sf::Keyboard::A, L'ô'},
-		{sf::Keyboard::B, L'è'},
-		{sf::Keyboard::C, L'ñ'},
-		{sf::Keyboard::D, L'â'},
-		{sf::Keyboard::E, L'ó'},
-		{sf::Keyboard::F, L'à'},
-		{sf::Keyboard::G, L'ï'},
-		{sf::Keyboard::H, L'ð'},
-		{sf::Keyboard::I, L'ø'},
-		{sf::Keyboard::J, L'î'},
-		{sf::Keyboard::K, L'ë'},
-		{sf::Keyboard::L, L'ä'},
-		{sf::Keyboard::M, L'ü'},
-		{sf::Keyboard::N, L'ò'},
-		{sf::Keyboard::O, L'ù'},
-		{sf::Keyboard::P, L'ç'},
-		{sf::Keyboard::Q, L'é'},
-		{sf::Keyboard::R, L'ê'},
-		{sf::Keyboard::S, L'û'},
-		{sf::Keyboard::T, L'å'},
-		{sf::Keyboard::U, L'ã'},
-		{sf::Keyboard::V, L'ì'},
-		{sf::Keyboard::W, L'ö'},
-		{sf::Keyboard::X, L'÷'},
-		{sf::Keyboard::Y, L'í'},
-		{sf::Keyboard::Z, L'ÿ'},
-		{sf::Keyboard::LBracket, L'õ'},
-		{sf::Keyboard::RBracket, L'ú'},
-		{sf::Keyboard::Semicolon, L'æ'},
-		{sf::Keyboard::Comma, L'á'},
-		{sf::Keyboard::Period, L'þ'},
-		{sf::Keyboard::Quote, L'ý'},
-		{sf::Keyboard::Tilde, L'¸'} 
-	};
 }
 
 void
@@ -100,7 +67,41 @@ TextBox::action()
 		}
 		else
 		{
-			//if (pressKey == sf::Keyboard::Key::Backspace) text.setString(textBoxValue);
+			static std::map<sf::Keyboard::Key, wchar_t> russianChars = {
+				{sf::Keyboard::A, L'ô'},
+				{sf::Keyboard::B, L'è'},
+				{sf::Keyboard::C, L'ñ'},
+				{sf::Keyboard::D, L'â'},
+				{sf::Keyboard::E, L'ó'},
+				{sf::Keyboard::F, L'à'},
+				{sf::Keyboard::G, L'ï'},
+				{sf::Keyboard::H, L'ð'},
+				{sf::Keyboard::I, L'ø'},
+				{sf::Keyboard::J, L'î'},
+				{sf::Keyboard::K, L'ë'},
+				{sf::Keyboard::L, L'ä'},
+				{sf::Keyboard::M, L'ü'},
+				{sf::Keyboard::N, L'ò'},
+				{sf::Keyboard::O, L'ù'},
+				{sf::Keyboard::P, L'ç'},
+				{sf::Keyboard::Q, L'é'},
+				{sf::Keyboard::R, L'ê'},
+				{sf::Keyboard::S, L'û'},
+				{sf::Keyboard::T, L'å'},
+				{sf::Keyboard::U, L'ã'},
+				{sf::Keyboard::V, L'ì'},
+				{sf::Keyboard::W, L'ö'},
+				{sf::Keyboard::X, L'÷'},
+				{sf::Keyboard::Y, L'í'},
+				{sf::Keyboard::Z, L'ÿ'},
+				{sf::Keyboard::LBracket, L'õ'},
+				{sf::Keyboard::RBracket, L'ú'},
+				{sf::Keyboard::Semicolon, L'æ'},
+				{sf::Keyboard::Comma, L'á'},
+				{sf::Keyboard::Period, L'þ'},
+				{sf::Keyboard::Quote, L'ý'},
+				{sf::Keyboard::Tilde, L'¸'}
+			};
 			if (pressKey == sf::Keyboard::Space)
 				key = ' ';
 			else key = russianChars[pressKey];
@@ -108,4 +109,12 @@ TextBox::action()
 		textBoxValue.push_back(key);
 	}
 	text.setString(textBoxValue);
+}
+
+void
+TextBox::write()
+{
+	//std::wcout << text.getString().toWideString() << '\n';
+	Writer w;
+	w.write(text.getString().toWideString());
 }

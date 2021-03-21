@@ -10,6 +10,8 @@
 
 #include "Button.h"
 #include "TextBox.h"
+#include "Reader.h"
+
 class GUI
 {
 public:
@@ -17,6 +19,13 @@ public:
 	void startMainMenu();
 
 private:
+	enum class Locations
+	{
+		MainMenu,
+		Table,
+		InputLesson
+	};
+	Locations location;
 	sf::RenderWindow window;
 	sf::Vector2u screanSize;
 	sf::Font font;

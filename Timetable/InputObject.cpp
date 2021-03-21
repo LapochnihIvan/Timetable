@@ -11,16 +11,8 @@ InputObject::InputObject(const sf::String &string,
 void
 InputObject::actionListener(sf::Event &event)
 {
-    //sf::Event event;
-    //run = true;
-    //while (window->isOpen())
-    //{
     if (!run) return;
-    //while (window->pollEvent(event))
-    //{
     if (event.type == evType)
         if (check())
             action();
-    //}
-//}
 }

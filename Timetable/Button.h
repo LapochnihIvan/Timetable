@@ -14,9 +14,9 @@ public:
 		const sf::Vector2f &size,
 		const std::function<void()> &action,
 		sf::RenderWindow &window);
-	bool check() final;
-	void action() final;
 private:
 	const std::function<void()> act;
+	bool check() final;
+	void action() final;
 };
 #endif

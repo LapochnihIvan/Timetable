@@ -1,6 +1,7 @@
 #ifndef TEXT_BOX_H
 #define TEXT_BOX_H
 
+#include <iostream>
 #include <xstring>
 #include <map>
 
@@ -9,19 +10,19 @@
 class TextBox : public InputObject
 {
 public:
-	enum Type {
+	enum class Type {
 		Numeric,
 		Text
 	};
 	TextBox(float y,
 		const Type &type,
 		sf::RenderWindow &window);
-	bool check() final;
-	void action() final;
 	void actionListener(sf::Event &event) final;
+	void write();
 private:
 	Type type;
 	sf::Keyboard::Key pressKey;
-	std::map<sf::Keyboard::Key, wchar_t> russianChars;
+	bool check() final;
+	void action() final;
 };
 #endif
